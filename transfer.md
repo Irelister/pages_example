@@ -32,7 +32,7 @@ ifode.xyz
 https://cdn.lgaircon.xyz:443/jquery3.3.1.min.js
 
 
-Ticket 2344
+Ticket 2344 - Add to the watchlist. 4/4/2025; Finland Tipper regarding Ivanti Pulse VPN
 209.112.251.121
 199.96.44.46
 144.121.198.6
