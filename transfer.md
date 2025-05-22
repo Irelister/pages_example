@@ -83,7 +83,10 @@ EEA7F5A7DF815B0219298DAD7E4BEB7E043C1ABD1E8F33F0395B4FCCC801E51F
 
 
 
-
+DNS Exmaples
+kwkcsnhu2ilvln7r1l09m8fjoau4ivijcd03ntbi.oastify[.]com
+jh4bdm2tnh6u6msqmkl8770i99f23srkt8jv9jy.oastify[.]com
+m2peypnw8krxrpdt7n6bsalluc05owcoec4zunj.oastify[.]com
 
 
 
