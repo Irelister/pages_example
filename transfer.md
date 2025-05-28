@@ -1,3 +1,15 @@
+To see all connections to/from the IP IOC.
+index=asset_summary source="summary_conn_allowed" src_ip IN (206.238.179.172 159.100.53.223) dest_ip IN (206.238.179.172 159.100.53.223) earliest=3/25/2025:00:00:00 latest=3/29/2025:00:00:00
+
+To see RDP connections at a high level. 
+index=bro sourcetype="corelight_rdp" src_ip IN (206.238.179.172 159.100.53.223) dest_ip IN (206.238.179.172 159.100.53.223) earliest=3/28/2025:00:00:00 latest=3/28/2025:02:00:00
+
+To see an example successful/encrypted RDP session.
+index=bro sourcetype="corelight_rdp" src_ip IN (206.238.179.172 159.100.53.223) dest_ip IN (206.238.179.172 159.100.53.223) earliest=3/28/2025:00:00:00 latest=3/28/2025:02:00:00
+
+
+
+
 Overcast Panda - Add to watchlist
 43.248.136.161
 C589CD42BFC99D27B9341EA9DC6BE8BFEA325F3967C38E5C5EEEEC616414FAD7
