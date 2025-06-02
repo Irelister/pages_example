@@ -8,7 +8,7 @@ To see an example successful/encrypted RDP session.
 index=bro sourcetype="corelight_rdp" src_ip IN (206.238.179.172 159.100.53.223) dest_ip IN (206.238.179.172 159.100.53.223) earliest=3/28/2025:00:00:00 latest=3/28/2025:02:00:00
 
 
-Ticket 2716 - CSA-250589 - 
+Ticket 2716 - CSA-250589 - 5/28/2025 - Silver & Vshell
 wg.gooogleasia.com
 gooogleasia.com
 ks.evil.gooogleasia.com
