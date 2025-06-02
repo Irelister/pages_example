@@ -8,6 +8,24 @@ To see an example successful/encrypted RDP session.
 index=bro sourcetype="corelight_rdp" src_ip IN (206.238.179.172 159.100.53.223) dest_ip IN (206.238.179.172 159.100.53.223) earliest=3/28/2025:00:00:00 latest=3/28/2025:02:00:00
 
 
+Ticket 2716 - CSA-250589 - 
+wg.gooogleasia.com
+gooogleasia.com
+ks.evil.gooogleasia.com
+vs.gooogleasia.com
+account.gooogleasia.com
+evil.gooogleasia.com
+34.92.45.116
+34.92.186.106
+34.96.211.7
+34.96.252.230
+34.96.239.183
+E6DB3DE3A21DEBCE119B16697EA2DE5376F685567B284EF2DEE32FEB8D2D44F8
+21CCB25887EAE8B17349CEFC04394DC3AD75C289768D7BA61F51D228B4C964DB
+8D88944149EA1477BD7BA0A07BE3A4371BA958D4A47B783F7C10CBE08C5E7D38
+http://gooogleasia.com:8080
+
+
 Ticket 2697 - Envoy Panda - CSA-250603 - 5/27/2025 - 
 hexonet.net
 ns1221.hexonet.net
