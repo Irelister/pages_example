@@ -1,3 +1,11 @@
+| metadata type="sourcetypes" index="bro"
+| fieldformat firstTime=strftime(firstTime, "%m/%d/%y %H:%M:%S")
+| fieldformat lastTime=strftime(lastTime, "%m/%d/%y %H:%M:%S")
+
+
+
+
+
 Ticket 2881
 stage.bizmeet.pro
 stage.bizmeet.online
