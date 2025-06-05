@@ -1,6 +1,9 @@
-# Bro
-
+<details><summary>Bro Query</summary>
+  
+```plaintext
 index=bro sourcetype=corelight_conn earliest= latest=now()
+```
+</details>
 
 # Summary Index
 
