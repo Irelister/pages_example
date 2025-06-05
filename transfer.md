@@ -1,24 +1,13 @@
-Ticket 2877 
-comma3.cc
-datatabletemplate.xyz
-caldenly.org
-castleisiand.vc
-business-zoom.us
-datatabletemplate.shop
-videotalks.xyz
-sevenx.vc
-ripio.net
-us05web-zoom.store
-us05web-zoom.info
-us05web-zoom.site
-us05web-zoom.xyz
-us05web-zoom.pro
-us05web-zoom.top
-us05web-zoom.uk
-api.etherjs.pro
+Ticket 2881
+stage.bizmeet.pro
+stage.bizmeet.online
+zoom.ukweb05.us
+zoom.ukweb06.us
+oddiyana.vc
+45.94.211.21
+176.78.41.175
+147.79.103.251
 
-Ticket 2879
-api.etherjs.pro
 
 
 Ticket 2819 - Mustang Panda USB Worm and USBFect - CSIT-25112 - 6/2/2025
