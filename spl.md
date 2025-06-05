@@ -86,10 +86,76 @@ index=bro sourcetype=corelight_dhcp
 ```
 </details>
 
+<details><summary>Frequent Outbound Connections to Consumer ISP Ranges</summary>
+  
+```plaintext
+index=bro sourcetype=corelight_conn dest_port IN (80 443 8080)
+| lookup asn_by_ip ip as id.resp_h OUTPUT org 
+| search org="Comcast" OR org="AT&T" OR org="Charter" OR org="Verizon" 
+| stats count by id.orig_h, id.resp_h, org 
+```
+</details>
+
+<details><summary>Multiple Domains Resolving to Same IP</summary>
+  
+```plaintext
+index=central_summary source=summary_dns_with_answers 
+| stats dc(query) as domain_count by answer 
+| where domain_count > 10 
+```
+</details>
+
+<details><summary>Rare JA3/JA3S TLS Fingerprints</summary>
+  
+```plaintext
+index=central_summary source=summary_ssl 
+| stats count by ja3, ja3s, dest_ip 
+| where count < 5 
+```
+</details>
+
+<details><summary>Unusual HTTP Hosts or Repeating POST Requests</summary>
+  
+```plaintext
+index=bro sourcetype=corelight_http 
+| search method=POST 
+| stats count by src_ip, dest_ip, host_header, uri, user_agent 
+| where count > 20 
+```
+</details>
+
+<details><summary>High-Volume, Long-Lived Peer-to-Peer Connections</summary>
+  
+```plaintext
+index=bro sourcetype=corelight_conn 
+| search duration > 300 
+| stats count by src_ip, dest_ip, duration, service 
+| where count > 20 
+```
+</details>
+
+<details><summary>Suspicious File Transfers Over SMB</summary>
+  
+```plaintext
+index=central_summary source=summary_smb_files filename_with_extension IN ("lsass.dmp" *.dmp "procdump.exe") 
+| stats count by src_ip, dest_ip, filename_with_extension, action 
+```
+</details>
+
+<details><summary>Execution or Transfer of Credential Dumping Tools</summary>
+  
+```plaintext
+index=central_summary source=summary_http_address uri IN (*procdump* *mimikatz* *lsass* *comsvcs*) 
+| stats count by src_ip, dest_ip, uri 
+
+Index=bro sourcetype=corelight_http uri IN (*procdump* *mimikatz* *lsass* *comsvcs*) 
+| stats count by src_ip, dest_ip, uri, user_agent 
+```
+</details>
+
 <details><summary></summary>
   
 ```plaintext
 
 ```
 </details>
-
