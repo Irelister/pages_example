@@ -153,6 +153,52 @@ Index=bro sourcetype=corelight_http uri IN (*procdump* *mimikatz* *lsass* *comsv
 ```
 </details>
 
+<details><summary>Remote Access to LSASS via RPC or SAMR</summary>
+  
+```plaintext
+index=bro sourcetype=corelight_rpc 
+| search program IN ("samr", "lsarpc") 
+| stats count by src_ip, dest_ip, call 
+```
+</details>
+
+<details><summary>Suspicious SMB Uploads from Admin Workstations</summary>
+  
+```plaintext
+index=bro sourcetype=corelight_smb_cmd command="WRITE"
+| stats count by src_ip, dest_ip, command 
+```
+</details>
+
+<details><summary>Dump Files Exfiltrated Over HTTP</summary>
+  
+```plaintext
+index=central_summary source=summary_http_address uri IN (*.dmp *.zip) 
+| stats count by src_ip, dest_ip, uri 
+```
+</details>
+
+<details><summary></summary>
+  
+```plaintext
+
+```
+</details>
+
+<details><summary></summary>
+  
+```plaintext
+
+```
+</details>
+
+<details><summary></summary>
+  
+```plaintext
+
+```
+</details>
+
 <details><summary></summary>
   
 ```plaintext
