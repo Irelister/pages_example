@@ -177,6 +177,62 @@ index=central_summary source=summary_http_address uri IN (*.dmp *.zip)
 | stats count by src_ip, dest_ip, uri 
 ```
 </details>
+##T1564 Hide Artifacts
+<details><summary>Detect File Transfers with Suspicious or Hidden Filenames</summary>
+  
+```plaintext
+index=zeek sourcetype=zeek:files 
+| where isnull(extracted) AND (filename LIKE ".%" OR filename IN ("thumbs.db", "desktop.ini")) 
+| eval risk="Possible hidden file transfer"
+| table _time, uid, source, destination, filename, mime_type, risk
+```
+</details>
+
+<details><summary>Detect Executable Files from Suspicious Directories via SMB</summary>
+  
+```plaintext
+index=zeek sourcetype=zeek:smb_files 
+| where filename LIKE "%.exe" AND (filename LIKE "%\\$Recycle.Bin\\%" OR filename LIKE "%\\Temp\\%") 
+| eval risk="Executable file in suspicious hidden folder"
+| table _time, id_orig_h, id_resp_h, filename, action, seen_bytes, risk
+```
+</details>
+
+<details><summary>Detect Long SSH Sessions</summary>
+  
+```plaintext
+index=zeek sourcetype=zeek:ssh 
+| search auth_success=true 
+| join type=inner uid [ search index=zeek sourcetype=zeek:conn ] 
+| where service=="ssh" AND duration>300 
+| eval risk="Long SSH session; check for hidden or file manipulation"
+| table _time, id_orig_h, id_resp_h, duration, auth_success, risk
+```
+</details>
+
+<details><summary>Detect Archive Files with Suspicious Naming or Locations</summary>
+  
+```plaintext
+index=zeek sourcetype=zeek:files 
+| where mime_type IN ("application/zip", "application/x-rar-compressed") AND filename LIKE "%.%" 
+| search filename=".%" OR filename LIKE "%\\Temp\\%" 
+| eval risk="Possible hidden archive"
+| table _time, id_orig_h, id_resp_h, filename, mime_type, risk
+```
+</details>
+
+<details><summary>Look for Uncommon File Extensions Used Over HTTP or SMB</summary>
+  
+```plaintext
+index=zeek sourcetype=zeek:files 
+| where mime_type="application/octet-stream" AND NOT filename LIKE "%.exe" AND NOT filename LIKE "%.dll" 
+| eval risk="Unusual binary transfer - possible renamed executable or payload"
+| table _time, filename, mime_type, id_orig_h, id_resp_h, risk
+```
+</details>
+
+Combine weird transfer with off process creations if possible.  
+Look for NTFS Alternate Data streams. Detectable if SMB logs show file::$DATA in the filename.
 
 <details><summary></summary>
   
