@@ -1,4 +1,4 @@
-<dashboard>
+d=<dashboard>
   <label>MITRE T1041 - Exfiltration Over Command and Control Channel (Zeek/Corelight)</label>
   <description>Detect possible data exfiltration activities over C2 channels using Zeek/Corelight logs.</description>
   <row>
@@ -6,10 +6,9 @@
       <title>Large Data Transfers via HTTP</title>
       <chart>
         <search>
-          <query>index=bro sourcetype=corelight_http 
-                | where method="POST"
-                | stats sum(resp_body_len) as total_bytes_sent by src_ip, dest_ip, uri 
-                | where total_bytes_sent &gt; 1000000</query>
+          <query>index="bro" sourcetype="corelight_http" method="POST" is_dest_internal_ip=false
+                | stats sum(request_body_len) as total_bytes_sent by src_ip, dest_ip, uri 
+                | where total_bytes_sent > 1000000</query>
         </search>
         <option name="charting.chart">column</option>
       </chart>
